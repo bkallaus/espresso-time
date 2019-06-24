@@ -1,14 +1,13 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 function Home() {
   return (
-      <>
-        <div>
-        {'Percolation'}
-        </div>
-        <div>
-        {'Immersion'}
-        </div>
-    </>
+    <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/pour-over">Pour Over</Link></li>
+        <li><Link to="/espresso">Espresso</Link></li>
+    </ul>
   );
 }
 
