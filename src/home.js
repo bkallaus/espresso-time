@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledContainer = styled.div`
@@ -9,12 +9,13 @@ const StyledContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   
+  flex-wrap: wrap;
   margin: 16px;
   height: 100vh;
   width: 100%;
 `;
 
-const StyledCard  = styled.div`
+const StyledCard = styled.div`
   padding: 12px;
   height: 100px;
   width: 80px;
@@ -23,8 +24,8 @@ const StyledCard  = styled.div`
 function Home() {
   return (
     <StyledContainer>
-        <StyledCard><Link to="/pour-over">Pour Over</Link></StyledCard>
-        <StyledCard><Link to="/espresso">Espresso</Link></StyledCard>
+      <StyledCard><Link to="/pour-over">Pour Over</Link></StyledCard>
+      <StyledCard><Link to="/espresso">Espresso</Link></StyledCard>
     </StyledContainer>
   );
 }
