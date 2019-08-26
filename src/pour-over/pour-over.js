@@ -2,23 +2,21 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const StyledForm = styled.form`
+  align-items: center;
   display: flex;
 
   flex-wrap: wrap;
-  align-items: center;
   flex-direction: row; 
-  justify-content: space-around;
-  margin: 16px;
-  
-  height: 100vh;
+
+  margin: 40px 16px;
   width: 100%;
 `;
 
 const StyledLabel = styled.label`
-    width: 300px;
-    height: 100px;
-    margin: auto;
-  `;
+  width: 300px;
+  height: 100px;
+  margin: auto;
+`;
 
 function PourOver() {
   const [mililitersOfWater, setMiliLitersOfWater] = useState(1000);

@@ -11,14 +11,12 @@ const StyledContainer = styled.div`
   
   flex-wrap: wrap;
   margin: 16px;
-  height: 100vh;
-  width: 100%;
 `;
 
 const StyledCard = styled.div`
-  padding: 12px;
-  height: 100px;
-  width: 80px;
+  padding: 8px;
+  height: 80px;
+  width: 250px;
 `;
 
 function Home() {
