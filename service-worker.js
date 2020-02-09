@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/espresso-time/precache-manifest.805eee76b7e1925d6bbb3074a9c8836f.js"
+  "/espresso-time/precache-manifest.ee5d22e5a284b345435ec1dcfefe6a3f.js"
 );
 
 self.addEventListener('message', (event) => {
