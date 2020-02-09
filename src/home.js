@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import logo from './coffee-blur.png';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -8,23 +9,30 @@ const StyledContainer = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: center;
-  
   flex-wrap: wrap;
-  margin: 16px;
 `;
 
 const StyledCard = styled.div`
   padding: 8px;
-  height: 80px;
-  width: 250px;
+  height: 32px;
+  margin: auto
+  width: 80px;
+`;
+
+const StyledBanner = styled.div`
+  width: 100%;
+  background-image: url(${props => props.img});
 `;
 
 function Home() {
   return (
-    <StyledContainer>
-      <StyledCard><Link to="/pour-over">Pour Over</Link></StyledCard>
-      <StyledCard><Link to="/espresso">Espresso</Link></StyledCard>
-    </StyledContainer>
+    <>
+      <StyledBanner img={logo} />
+      <StyledContainer>
+        <StyledCard><Link to="/pour-over">Pour Over</Link></StyledCard>
+        <StyledCard><Link to="/espresso">Espresso</Link></StyledCard>
+      </StyledContainer>
+    </>
   );
 }
 

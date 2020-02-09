@@ -1,6 +1,6 @@
 import React from 'react';
 import AppRouter from './app-router';
 
-const App = () => <AppRouter />
+const App = () => <AppRouter />;
 
 export default App;

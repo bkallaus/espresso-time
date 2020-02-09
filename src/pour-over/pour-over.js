@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PageLayout from '../page-layout';
 
 const StyledForm = styled.form`
   align-items: center;
@@ -16,6 +17,13 @@ const StyledLabel = styled.label`
   width: 300px;
   height: 100px;
   margin: auto;
+`;
+
+const StyledInput = styled.input`
+  padding: 8px;
+  border: 1px solid grey;
+  border-radius: 4px; 
+  margin-left: 4px;
 `;
 
 function PourOver() {
@@ -37,16 +45,18 @@ function PourOver() {
   };
 
   return (
-    <StyledForm>
-      <StyledLabel htmlFor="ouncesOfwater">
+    <PageLayout>
+      <StyledForm>
+        <StyledLabel htmlFor="ouncesOfwater">
         Water (mL)
-        <input id="ouncesOfwater" value={mililitersOfWater} type="number" onInput={setWaterThenGrams} />
-      </StyledLabel>
-      <StyledLabel htmlFor="gramsOfGrounds">
+          <StyledInput id="ouncesOfwater" value={mililitersOfWater} type="number" onInput={setWaterThenGrams} />
+        </StyledLabel>
+        <StyledLabel htmlFor="gramsOfGrounds">
         Grounds (g)
-        <input id="gramsOfGrounds" value={gramsOfGrounds} type="number" onInput={setGramsthenWater} />
-      </StyledLabel>
-    </StyledForm>
+          <StyledInput id="gramsOfGrounds" value={gramsOfGrounds} type="number" onInput={setGramsthenWater} />
+        </StyledLabel>
+      </StyledForm>
+    </PageLayout>
   );
 }
 
