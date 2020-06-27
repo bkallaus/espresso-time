@@ -48,11 +48,11 @@ function PourOver() {
     <PageLayout>
       <StyledForm>
         <StyledLabel htmlFor="ouncesOfwater">
-        Water (mL)
+          Water (mL)
           <StyledInput id="ouncesOfwater" value={mililitersOfWater} type="number" onInput={setWaterThenGrams} />
         </StyledLabel>
         <StyledLabel htmlFor="gramsOfGrounds">
-        Grounds (g)
+          Grounds (g)
           <StyledInput id="gramsOfGrounds" value={gramsOfGrounds} type="number" onInput={setGramsthenWater} />
         </StyledLabel>
       </StyledForm>

@@ -3,36 +3,55 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from './coffee-blur.png';
 
-const StyledContainer = styled.div`
-  display: flex;
-  
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
+const StyledPage = styled.div`
+  height: 100vh;
 `;
 
-const StyledCard = styled.div`
-  padding: 8px;
-  height: 32px;
-  margin: auto
-  width: 80px;
+const StyledContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 100%;
 `;
 
 const StyledBanner = styled.div`
-  width: 100%;
+  height: 100%;  
+  background-repeat: no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
   background-image: url(${props => props.img});
+`;
+
+const StyledHeading = styled.h1`
+  color: white;
+  padding: 16px 32px;
+`;
+
+const StyledLink = styled(Link)`
+  color: white;
+  border: 1px solid white;
+  padding: 8px 16px;
+  border-radius: 4px; 
+  margin: 8px;
 `;
 
 function Home() {
   return (
-    <>
-      <StyledBanner img={logo} />
-      <StyledContainer>
-        <StyledCard><Link to="/pour-over">Pour Over</Link></StyledCard>
-        <StyledCard><Link to="/espresso">Espresso</Link></StyledCard>
-      </StyledContainer>
-    </>
+    <StyledPage>
+      <StyledBanner img={logo}>
+        <StyledContainer>
+          <StyledHeading>Espresso Time</StyledHeading>
+          <div>
+            <StyledLink to="/pour-over">Pour Over</StyledLink>
+            <StyledLink to="/espresso">Espresso</StyledLink>
+          </div>
+        </StyledContainer>
+      </StyledBanner>
+    </StyledPage>
   );
 }
 
