@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://bkallaus.github.io/espresso-time",
   "dependencies": {
+    "@chakra-ui/react": "^2.4.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
