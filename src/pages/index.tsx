@@ -4,6 +4,8 @@ import { Button, ChakraProvider } from "@chakra-ui/react";
 import TimerButton from "../components/timer-button";
 import { Line } from "react-chartjs-2";
 
+import { useLiveQuery } from "dexie-react-hooks";
+
 const pageStyles = {
   color: "#232129",
   padding: 96,
@@ -24,6 +26,8 @@ import {
   CategoryScale,
   Title,
 } from "chart.js";
+import { useDB } from "../components/use-db";
+import { db } from "../components/db";
 
 ChartJS.register(
   LineController,
@@ -34,13 +38,12 @@ ChartJS.register(
   Title
 );
 
-export type EspressoShot = {
-  shotTime: number;
-  date: string;
-};
-
 const IndexPage: React.FC<PageProps> = () => {
-  const [shots, setShots] = React.useState<EspressoShot[]>([]);
+  const shots =
+    useLiveQuery(async () => {
+      return await db.espressoShots.toArray();
+    }) ?? [];
+
   return (
     <ChakraProvider>
       <main style={pageStyles}>
@@ -58,7 +61,7 @@ const IndexPage: React.FC<PageProps> = () => {
             ],
           }}
         />
-        <TimerButton setShots={setShots}>Test</TimerButton>
+        <TimerButton />
       </main>
     </ChakraProvider>
   );

@@ -1,21 +1,8 @@
 import Dexie, { Table } from 'dexie';
+import { EspressoShot } from '../types/espresso-shot';
 
-export interface EspressoShot {
-  id?: number;
-  shotTime: number;
-  quality: number;
-  date: string;
-}
+export const db = new Dexie('espresso-time-db');
 
-export class MySubClassedDexie extends Dexie {
-  espressoShots!: Table<EspressoShot>; 
-
-  constructor() {
-    super('espresso-time-db');
-    this.version(1).stores({
-        espressoShots: '++id, shotTime' // Primary key and indexed props
-    });
-  }
-}
-
-export const db = new MySubClassedDexie();
+db.version(1).stores({
+  espressoShots: '++id, shotTime' // Primary key and indexed props
+});

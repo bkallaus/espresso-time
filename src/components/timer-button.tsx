@@ -1,22 +1,21 @@
 import React from "react";
 import { Button } from "@chakra-ui/react";
-import { EspressoShot } from "../pages";
+import { useDB } from "./use-db";
+import { EspressoShot } from "../types/espresso-shot";
 
-const TimerButton = ({
-  setShots,
-}: {
-  setShots: React.SetStateAction<EspressoShot[]>;
-}) => {
-  const addTime = (time: number) => {
+const TimerButton = () => {
+  const { addShot } = useDB();
+  const [isRunning, setIsRunning] = React.useState(false);
+  const [, setStartTime] = React.useState(0);
+
+  const addTime = async (time: number) => {
     const shot = {
       shotTime: time / 1000,
       date: new Date().toISOString(),
     };
-    setShots((shots: number[]) => [...shots, shot]);
-  };
 
-  const [isRunning, setIsRunning] = React.useState(false);
-  const [, setStartTime] = React.useState(0);
+    await addShot(shot);
+  };
 
   const toggle = () => {
     setIsRunning(!isRunning);
