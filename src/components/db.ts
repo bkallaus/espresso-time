@@ -1,5 +1,4 @@
-import Dexie, { Table } from 'dexie';
-import { EspressoShot } from '../types/espresso-shot';
+import Dexie from 'dexie';
 
 export const db = new Dexie('espresso-time-db');
 
