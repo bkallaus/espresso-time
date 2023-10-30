@@ -11,8 +11,21 @@ import {
   Td,
 } from "@chakra-ui/react";
 import TimerButton from "../components/timer-button";
+import ManualInput from "../components/manual-input";
 import { Line } from "react-chartjs-2";
 import { useLiveQuery } from "dexie-react-hooks";
+import {
+  Chart as ChartJS,
+  LineController,
+  LineElement,
+  PointElement,
+  LinearScale,
+  CategoryScale,
+  Title,
+} from "chart.js";
+import { useDB } from "../components/use-db";
+import { db } from "../components/db";
+import { EspressoShot } from "src/types/espresso-shot";
 
 const pageStyles = {
   color: "#232129",
@@ -26,19 +39,6 @@ const headingStyles = {
   marginBottom: "20px",
   textAlign: "center",
 };
-
-import {
-  Chart as ChartJS,
-  LineController,
-  LineElement,
-  PointElement,
-  LinearScale,
-  CategoryScale,
-  Title,
-} from "chart.js";
-import { useDB } from "../components/use-db";
-import { db } from "../components/db";
-import { EspressoShot } from "src/types/espresso-shot";
 
 ChartJS.register(
   LineController,
@@ -59,12 +59,27 @@ const IndexPage: React.FC<PageProps> = () => {
     <ChakraProvider>
       <main style={pageStyles}>
         <h1 style={headingStyles}>Espresso Time</h1>
-        <Box pb={5} textAlign={"center"} margin="auto">
+        <Box
+          pb={5}
+          display={"flex"}
+          flexDirection={"row"}
+          gap={"12px"}
+          justifyContent={"center"}
+        >
           <TimerButton />
+          <ManualInput />
         </Box>
         <Box maxH={400} display="flex" justifyContent={"center"}>
           <Line
             datasetIdKey="id"
+            options={{
+              maintainAspectRatio: false,
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            }}
             data={{
               labels: shots.map((shot) =>
                 new Date(shot.date).toLocaleDateString()
@@ -77,20 +92,17 @@ const IndexPage: React.FC<PageProps> = () => {
             }}
           />
         </Box>
-        <Box display={"flex"} justifyContent={"center"} width={"100%"} p={5}>
-          <Button onClick={clearAllShots}>Clear All</Button>
-        </Box>
         <Table maxW={300} margin="auto">
           <Thead>
-            <Td>ID</Td>
-            <Td>Shot Time (Seconds)</Td>
+            <Td>Shot Time (Sec)</Td>
+            <Td>Date</Td>
             <Td>Actions</Td>
           </Thead>
           <Tbody>
             {shots.map((shot) => (
               <Tr key={shot.id}>
-                <Td>{shot.id}</Td>
                 <Td>{shot.shotTime.toFixed(2)}</Td>
+                <Td>{new Date(shot.date).toLocaleDateString()}</Td>
                 <Td>
                   <Button onClick={() => deleteShot(shot.id)}>Delete</Button>
                 </Td>
@@ -98,6 +110,9 @@ const IndexPage: React.FC<PageProps> = () => {
             ))}
           </Tbody>
         </Table>
+        <Box display={"flex"} justifyContent={"center"} width={"100%"} p={5}>
+          <Button onClick={clearAllShots}>Clear All</Button>
+        </Box>
       </main>
     </ChakraProvider>
   );
